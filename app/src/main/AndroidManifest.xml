@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.practice.sensorsapp">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,19 +10,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SensorsApp">
-        <activity android:name=".ProximityActivity">
+        <service
+            android:name=".compass.CompassService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <receiver android:name=".compass.ActionListener" />
+
+        <activity android:name=".compass.CompassActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OrientationActivity">
+        <activity android:name=".ProximityActivity">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".OrientationActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".SensorActivity">
 
